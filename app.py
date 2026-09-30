@@ -1,3 +1,4 @@
+import os
 import gradio as gr
 from mosaic_core import run_pipeline, benchmark_grid_sizes, format_benchmark_report
 
@@ -52,4 +53,5 @@ with gr.Blocks(title="Interactive Image Mosaic Generator") as demo:
     )
  
 if __name__ == "__main__":
-    demo.launch()
+    port = int(os.environ.get("PORT", 7860))
+    demo.launch(server_name="0.0.0.0", server_port=port)
